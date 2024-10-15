@@ -2,14 +2,31 @@
     "name": "Simple Adblocker",
     "version": "1.0",
     "description": "This is an Adblocker.",
-    "permissions": ["webRequest", "webRequestBlocking", "<all_urls>"],
+    "permissions": [
+      "declarativeNetRequest",
+      "storage",
+      "activeTab"
+    ],
     "background": {
-        "scripts": ["background.js"]
+      "service_worker": "background.js"
     },
     "icons": {
-        "16": "icons/ico_16x16.png",
-        "48": "icons/ico_48x48.png",
-        "128": "icons/ico_128x128.png"
+      "16": "icons/ico_16x16.png",
+      "48": "icons/ico_48x48.png",
+      "128": "icons/ico_128x128.png"
     },
-    "manifest_version": 2
-}
+    "declarative_net_request": {
+      "rule_resources": [
+        {
+          "id": "ruleset_1",
+          "enabled": true,
+          "path": "rules.json"
+        }
+      ]
+    },
+    "host_permissions": [
+      "*://*/*"
+    ],
+    "manifest_version": 3
+  }
+  
